@@ -1,0 +1,96 @@
+compiled_BANK_00.bin
+compiled_CODE.bin
+compiled_UNASSIGNED.bin
+compiled_UNCONTENDED.bin
+
+__code_crt_main_head
+
+
+
+There are several sections the compiler
+puts stuff into:
+
+codeseg = code
+constseg = constant data
+bssseg = uninitialized variables
+dataseg = initialized variables
+
+You have to change the destination section
+for each of those segments on the zcc line.
+
+zsdcc can only do codeseg and constseg so
+the recommended thing to do is declare anything
+destined for bss or data sections in asm where
+they can be placed properly.
+
+example of c declarations:
+
+extern int a;   // bss
+extern int b = 10;   // data
+
+Then in a separate asm file define the variables
+placed in a specific section:
+
+SECTION bss_name
+PUBLIC _a
+_a : defs 2
+
+SECTION data_name
+PUBLIC _b
+_b : defw 10
+
+That should be "extern int b;".
+The C declarations are not creating space -
+they only tell the compiler the variables
+exist and are defined elsewhere.
+
+
+
+
+
+INT_ON:
+	di			;disable interrupts
+	ld A, $fe;<--
+	;Set the interrupt vector register to the high byte of the vector table at $fe00   example i = #FE and set Mode 2 interrupts
+
+	ld I, A
+	im 2
+	;
+	ld HL, $fe00;<--	;fe00	65024
+	;now set up the table of vectors
+
+INT10:
+	ld (HL), $fd;<--
+	;store $FD in 257 locations
+
+	inc L
+	jr nz, INT10
+	inc H
+	ld (HL), $fd;<--
+	;the last $FD goes in $FF00
+
+	ld A, $c3		;now poke a jump instruction into location $FDFD with the address for the jump as INT_ROUTINE
+
+	ld ($fdfd), A;<--
+	ld HL, INT_ROUTINE
+	ld ($fdfe), HL;<--
+
+	ld HL, FIFTIES	; set up the 50's counter
+	ld (HL), 50		; to equal 50
+	ei				;turn on the interrupts and the clock should be on
+ret
+
+
+ld a,(bc)
+ld a,(de)
+ld a,(**)
+ld a,*
+
+ld a,b
+ld a,c
+ld a,d
+ld a,e
+ld a,h
+ld a,l
+ld a,(hl)
+ld a,a
