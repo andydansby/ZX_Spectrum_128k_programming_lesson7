@@ -1,0 +1,53 @@
+Object  file ramALL.o at $0000: Z80RMF12
+  Name: ramALL
+  Section CONTENDED: 19 bytes
+  Section code_compiler: 614 bytes
+  Section bss_compiler: 0 bytes
+  Section BANK_00: 4835 bytes
+  Section data_compiler: 8 bytes
+  Section rodata_compiler: 267 bytes
+  Section IM2_VECTOR_PLACEMENT: 325 bytes
+  Section code_user: 150 bytes
+  Section rodata_user: 1 bytes
+  Section smc_user: 0 bytes
+  Section data_user: 0 bytes
+  Section bss_user: 5 bytes
+  Symbols:
+    G A $0000 _Variable_in_contended (section CONTENDED) (file ramlow.asm:28)
+    G A $0001 _add_two_numbers (section CONTENDED) (file contended.c:27)
+    G A $0000 _subtract2numbers (section BANK_00) (file ram0.c:27)
+    G A $0015 _screen1 (section BANK_00) (file ram0Z.asm:31)
+    G A $05B9 _screen2 (section BANK_00) (file ram0Z.asm:35)
+    G A $0CD3 _screen3 (section BANK_00) (file ram0Z.asm:39)
+    G A $12DD _Variable_in_RAM0 (section BANK_00) (file ram0Z.asm:45)
+    G A $12DE _Variable_in_Bank0 (section BANK_00) (file ram0Z.asm:50)
+    G A $12DF _border_Change_RAM0 (section BANK_00) (file ram0Z.asm:55)
+    G A $0000 _tom (section data_compiler) (file uncontended.c:17)
+    G A $0001 _dick (section data_compiler) (file uncontended.c:21)
+    G A $0002 _harry (section data_compiler) (file uncontended.c:25)
+    G A $0003 _eve (section data_compiler) (file uncontended.c:29)
+    G A $0005 _bob (section data_compiler) (file uncontended.c:33)
+    G A $0007 _ava (section data_compiler) (file uncontended.c:37)
+    G A $0000 _multiply2numbers (section code_compiler) (file uncontended.c:45)
+    G A $0014 _key_test (section code_compiler) (file uncontended.c:62)
+    G A $009D _ZX0_decompress (section code_compiler) (file uncontended.c:135)
+    G A $00B2 _main (section code_compiler) (file uncontended.c:152)
+    G A $0000 _IM2_PUSH_POP (section IM2_VECTOR_PLACEMENT) (file im2.asm:25)
+    G A $0022 _SETUP_IM2 (section IM2_VECTOR_PLACEMENT) (file im2.asm:57)
+    G A $002D NOP_OP (section IM2_VECTOR_PLACEMENT) (file im2.asm:68)
+    G A $0043 _IM2_VECTOR (section IM2_VECTOR_PLACEMENT) (file im2.asm:100)
+    G A $0000 _dzx0_turbo (section code_user) (file uncontended.asm:30)
+    G A $0085 _border_Change_IM2 (section code_user) (file uncontended.asm:126)
+    G A $0092 _border_Change_uncontended (section code_user) (file uncontended.asm:140)
+    G A $0000 _xyzzy2 (section rodata_user) (file uncontended.asm:150)
+    G A $0000 _zx0_source (section bss_user) (file uncontended.asm:166)
+    G A $0002 _zx0_destination (section bss_user) (file uncontended.asm:170)
+    G A $0004 _ada (section bss_user) (file uncontended.asm:175)
+  Externs:
+    U         l_gint
+    U         l_mult
+    U         zx_border
+    U         zx_cls
+    U         printf
+    U         in_key_pressed
+    U         in_pause
